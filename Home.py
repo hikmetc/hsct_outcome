@@ -21,6 +21,7 @@ instructions = """
 **Enter the variables below to predict the outcome of your interest**
 """
 
+disclaimer = 'For research use only'
 
 @st.cache_resource
 def get_model(model):
@@ -62,6 +63,7 @@ if choice == "Acute GVHD prediction":
     model = get_model(model_name)
     st.write(" ")
     st.markdown(instructions)
+    st.warning(disclaimer)
     
     input_variables = model.feature_names_
     # Input vars Create a DataFrame for better visualization
@@ -254,7 +256,7 @@ if choice == "Moderate to very severe acute GVHD prediction":
     model = get_model(model_name)
     st.write(" ")
     st.markdown(instructions)
-        
+    st.warning(disclaimer)    
     # Load the uploaded data
     uploaded_data = pd.read_excel('tez_selected_data_v2_clean_v6_cat.xlsx')
 
@@ -443,7 +445,7 @@ if choice == "Survival prediction":
     model = get_model(model_name)
     st.write(" ")
     st.markdown(instructions)
-        
+    st.warning(disclaimer)    
     # Load the uploaded data
     uploaded_data = pd.read_excel('tez_selected_data_v2_clean_v6_cat.xlsx')
 
@@ -635,7 +637,7 @@ if choice == "Chronic GVHD prediction":
     model = get_model(model_name)
     st.write(" ")
     st.markdown(instructions)
-        
+    st.warning(disclaimer)    
     # Load the uploaded data
     uploaded_data = pd.read_excel('tez_selected_data_v2_clean_v6_cat.xlsx')
 
