@@ -21,7 +21,7 @@ instructions = """
 **Enter the variables below to predict the outcome of your interest**
 """
 
-disclaimer = 'For research use only'
+disclaimer = '**For research use only**'
 
 @st.cache_resource
 def get_model(model):
