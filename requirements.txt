@@ -3,3 +3,5 @@ pycaret==3.3.1
 streamlit==1.38.0
 catboost==1.2.7
 openpyxl==3.1.0
+pytest
+patsy
