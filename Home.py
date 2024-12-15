@@ -832,4 +832,3 @@ if choice == "Chronic GVHD prediction":
         output = predict_target(model, input_df, pred_name)
 
 st.write(" ")
-
