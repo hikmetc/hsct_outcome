@@ -251,8 +251,9 @@ if choice == "Moderate to very severe acute GVHD prediction":
     uploaded_data = pd.read_excel('tez_selected_data_v2_clean_v6_cat.xlsx')
 
     # Collect raw input variables (before feature engineering)
+    col1, col2 = st.columns([1,1])
     # Donor type
-    Donor_type = st.selectbox("Donor type", options=uploaded_data['Donor type'].dropna().unique())
+    Donor_type = col1.selectbox("Donor type", options=uploaded_data['Donor type'].dropna().unique())
 
     # HLA_numeric_conformance
     HLA_numeric_conformance = None # st.number_input("HLA numeric conformance", min_value=0.0, value=0.0)
@@ -261,16 +262,16 @@ if choice == "Moderate to very severe acute GVHD prediction":
     Haploidentical_transplant = None # st.checkbox("Haploidentical transplant")
 
     # Recipent age
-    Recipent_age = st.number_input("Recipent age", min_value=0, max_value=120, value=30)
+    Recipent_age = col2.number_input("Recipent age", min_value=0, max_value=120, value=30)
 
     # Donor age
-    Donor_age = st.number_input("Donor age", min_value=0, max_value=120, value=30)  
+    Donor_age = col1.number_input("Donor age", min_value=0, max_value=120, value=30)  
 
     # Recipent gender
-    Recipent_gender = st.selectbox("Recipent gender", options=uploaded_data['Recipent gender'].dropna().unique())
+    Recipent_gender = col2.selectbox("Recipent gender", options=uploaded_data['Recipent gender'].dropna().unique())
 
     # Donor gender
-    Donor_gender = st.selectbox("Donor gender", options=uploaded_data['Donor gender'].dropna().unique())
+    Donor_gender = col1.selectbox("Donor gender", options=uploaded_data['Donor gender'].dropna().unique())
 
     # Gender mismatch
     if Recipent_gender == Donor_gender:
@@ -280,28 +281,28 @@ if choice == "Moderate to very severe acute GVHD prediction":
 
    
     # Main diagnosis
-    Main_diagnosis = st.selectbox("Main diagnosis", options=uploaded_data['Main diagnosis'].dropna().unique())
+    Main_diagnosis = col2.selectbox("Main diagnosis", options=uploaded_data['Main diagnosis'].dropna().unique())
 
     # Diagnosis
-    Diagnosis = st.selectbox("Diagnosis", options=uploaded_data['Diagnosis'].dropna().unique())
+    Diagnosis = col1.selectbox("Diagnosis", options=uploaded_data['Diagnosis'].dropna().unique())
 
     # Stem cell source
-    Stem_cell_source = st.selectbox("Stem cell source", options=uploaded_data['Stem cell source'].dropna().unique())
+    Stem_cell_source = col2.selectbox("Stem cell source", options=uploaded_data['Stem cell source'].dropna().unique())
 
     # Conditioning therapy
-    Conditioning_therapy = st.selectbox("Conditioning therapy", options=uploaded_data['Conditioning therapy'].dropna().unique())
+    Conditioning_therapy = col1.selectbox("Conditioning therapy", options=uploaded_data['Conditioning therapy'].dropna().unique())
 
     # Conditioning therapy type
-    Conditioning_therapy_type = st.selectbox("Conditioning therapy type", options=uploaded_data['Conditioning therapy type'].dropna().unique())
+    Conditioning_therapy_type = col2.selectbox("Conditioning therapy type", options=uploaded_data['Conditioning therapy type'].dropna().unique())
 
     # Graft-Versus-Host Disease (GVHD) Prophylaxis
-    GVHD_Prophylaxis = st.selectbox("Graft-Versus-Host Disease (GVHD) Prophylaxis", options=uploaded_data['Graft-Versus-Host Disease (GVHD) Prophylaxis'].dropna().unique())
+    GVHD_Prophylaxis = col1.selectbox("Graft-Versus-Host Disease (GVHD) Prophylaxis", options=uploaded_data['Graft-Versus-Host Disease (GVHD) Prophylaxis'].dropna().unique())
 
     # Recipient blood type
-    Recipient_blood_type = st.selectbox("Recipient blood type", options=uploaded_data['Recipient blood type '].dropna().unique())
+    Recipient_blood_type = col2.selectbox("Recipient blood type", options=uploaded_data['Recipient blood type '].dropna().unique())
 
     # Donor blood type
-    Donor_blood_type = st.selectbox("Donor blood type", options=uploaded_data['Recipient blood type '].dropna().unique())
+    Donor_blood_type = col1.selectbox("Donor blood type", options=uploaded_data['Recipient blood type '].dropna().unique())
     
     # Blood type mismatch
     if Recipient_blood_type == Donor_blood_type:
@@ -311,28 +312,28 @@ if choice == "Moderate to very severe acute GVHD prediction":
     
 
     # Mononuclear cells 10E8
-    Mononuclear_cells_10E8 = st.number_input("Mononuclear cells 10E8", min_value=0.0, value=0.0)
+    Mononuclear_cells_10E8 = col2.number_input("Mononuclear cells 10E8", min_value=0.0, value=0.0)
 
     # CD34-positive cells 10E6
-    CD34_positive_cells_10E6 = st.number_input("CD34-positive cells 10E6", min_value=0.0, value=0.0)
+    CD34_positive_cells_10E6 = col1.number_input("CD34-positive cells 10E6", min_value=0.0, value=0.0)
 
     # CD3-positive cells 10E7
     CD3_positive_cells_10E7 = None # st.number_input("CD3-positive cells 10E7", min_value=0.0, value=0.0)
 
     # CD3-16-56+ 10E7
-    CD3_16_56_positive_cells_10E7 = st.number_input("CD3-16-56+ cells 10E7", min_value=0.0, value=0.0)
+    CD3_16_56_positive_cells_10E7 = col2.number_input("CD3-16-56+ cells 10E7", min_value=0.0, value=0.0)
 
     # CD3+4+ 10E7
-    CD3_4_positive_cells_10E7 = st.number_input("CD3+4+ cells 10E7", min_value=0.0, value=0.0)
+    CD3_4_positive_cells_10E7 = col1.number_input("CD3+4+ cells 10E7", min_value=0.0, value=0.0)
 
     # CD3+8+ 10E7
-    CD3_8_positive_cells_10E7 = st.number_input("CD3+8+ cells 10E7", min_value=0.0, value=0.0)
+    CD3_8_positive_cells_10E7 = col2.number_input("CD3+8+ cells 10E7", min_value=0.0, value=0.0)
 
     # CD19+ 10E7
-    CD19_positive_cells_10E7 = st.number_input("CD19+ cells 10E7", min_value=0.0, value=0.0)
+    CD19_positive_cells_10E7 = col1.number_input("CD19+ cells 10E7", min_value=0.0, value=0.0)
     
     # Total Nucleated Cells 10E8
-    Total_Nucleated_Cells_10E8 = st.number_input("Total Nucleated Cells 10E8", min_value=0.0, max_value=uploaded_data['Total Nucleated Cells 10E8'].max(), value=0.0)
+    Total_Nucleated_Cells_10E8 = col2.number_input("Total Nucleated Cells 10E8", min_value=0.0, max_value=uploaded_data['Total Nucleated Cells 10E8'].max(), value=0.0)
 
     # HSV infection status
     HSV_infection_status = None #st.checkbox("HSV infection")
@@ -346,25 +347,25 @@ if choice == "Moderate to very severe acute GVHD prediction":
     # Additional variables based on your request
 
     # Mismatched locus count
-    Mismatched_locus_count = st.number_input("Mismatched locus count", min_value=0, max_value=2, value=0)
+    Mismatched_locus_count = col1.number_input("Mismatched locus count", min_value=0, max_value=2, value=0)
 
     # Total Body Irradiation Status
-    Total_Body_Irradiation_Status = st.selectbox("Total Body Irradiation", options=uploaded_data['Total Body Irradiation Status'].dropna().unique()) # st.checkbox("Total Body Irradiation")
+    Total_Body_Irradiation_Status = col2.selectbox("Total Body Irradiation", options=uploaded_data['Total Body Irradiation Status'].dropna().unique()) # st.checkbox("Total Body Irradiation")
 
     # Number of afferes applied to donor
     Number_of_afferes_applied_to_donor = None # st.number_input("Number of afferes applied to donor", min_value=0, max_value=5, value=1)
 
     # The amount of graft given to the recipient
-    The_amount_of_graft_given_to_the_recipient = st.number_input("The amount of graft given to the recipient", min_value=0.0, max_value=uploaded_data['The amount of graft given to the recipient'].max(), value=0.0)
+    The_amount_of_graft_given_to_the_recipient = col1.number_input("The amount of graft given to the recipient", min_value=0.0, max_value=uploaded_data['The amount of graft given to the recipient'].max(), value=0.0)
 
     # CMV infection status
-    CMV_infection_status = st.selectbox("CMV infection", options=uploaded_data['CMV infection status'].dropna().unique())
+    CMV_infection_status = col2.selectbox("CMV infection", options=uploaded_data['CMV infection status'].dropna().unique())
 
     # The day the neutrophil count exceeds 1000
-    The_day_the_neutrophil_count_exceeds_1000 = st.number_input("The day the neutrophil count exceeds 1000", min_value=0, max_value=145, value=0)
+    The_day_the_neutrophil_count_exceeds_1000 = col1.number_input("The day the neutrophil count exceeds 1000", min_value=0, max_value=145, value=0)
 
     # Number of relapse
-    Number_of_relapse = st.number_input("Number of relapse", min_value=0, max_value=3, value=0)
+    Number_of_relapse = col2.number_input("Number of relapse", min_value=0, max_value=3, value=0)
 
     # Collect inputs into a dictionary
     input_data = {
@@ -428,49 +429,50 @@ if choice == "Survival prediction":
     uploaded_data = pd.read_excel('tez_selected_data_v2_clean_v6_cat.xlsx')
 
     # Collect raw input variables (before feature engineering)
+    col1, col2 = st.columns([1,1])
     # Viral infection
     Viral_infection = None
     # Donor type
-    Donor_type = st.selectbox("Donor type", options=uploaded_data['Donor type'].dropna().unique())
+    Donor_type = col1.selectbox("Donor type", options=uploaded_data['Donor type'].dropna().unique())
 
     # HLA_numeric_conformance
-    HLA_numeric_conformance = st.number_input("HLA numeric conformance", min_value=0.0, value=0.0)
+    HLA_numeric_conformance = col2.number_input("HLA numeric conformance", min_value=0.0, value=0.0)
     
     # Mismatched locus count
-    Mismatched_locus_count = st.number_input("Mismatched locus count", min_value=0, max_value=2, value=0)
+    Mismatched_locus_count = col1.number_input("Mismatched locus count", min_value=0, max_value=2, value=0)
     
     # Haploidentical transplant
-    Haploidentical_transplant = st.selectbox("Haploidentical transplant", options=uploaded_data['Haploidentical transplant'].dropna().unique()) # st.checkbox("Haploidentical transplant")
+    Haploidentical_transplant = col2.selectbox("Haploidentical transplant", options=uploaded_data['Haploidentical transplant'].dropna().unique()) # st.checkbox("Haploidentical transplant")
 
     # Recipent age
-    Recipent_age = st.number_input("Recipent age", min_value=0, max_value=120, value=30)
+    Recipent_age = col1.number_input("Recipent age", min_value=0, max_value=120, value=30)
 
     # Donor age
     Donor_age = None # st.number_input("Donor age", min_value=0, max_value=120, value=30)
 
     # Main diagnosis
-    Main_diagnosis = st.selectbox("Main diagnosis", options=uploaded_data['Main diagnosis'].dropna().unique())
+    Main_diagnosis = col2.selectbox("Main diagnosis", options=uploaded_data['Main diagnosis'].dropna().unique())
 
     # Diagnosis
-    Diagnosis = st.selectbox("Diagnosis", options=uploaded_data['Diagnosis'].dropna().unique())
+    Diagnosis = col1.selectbox("Diagnosis", options=uploaded_data['Diagnosis'].dropna().unique())
 
     # Stem cell source
-    Stem_cell_source = st.selectbox("Stem cell source", options=uploaded_data['Stem cell source'].dropna().unique())
+    Stem_cell_source = col2.selectbox("Stem cell source", options=uploaded_data['Stem cell source'].dropna().unique())
 
     # Conditioning therapy
-    Conditioning_therapy = st.selectbox("Conditioning therapy", options=uploaded_data['Conditioning therapy'].dropna().unique())
+    Conditioning_therapy = col1.selectbox("Conditioning therapy", options=uploaded_data['Conditioning therapy'].dropna().unique())
 
     # Conditioning therapy type
-    Conditioning_therapy_type = st.selectbox("Conditioning therapy type", options=uploaded_data['Conditioning therapy type'].dropna().unique())
+    Conditioning_therapy_type = col2.selectbox("Conditioning therapy type", options=uploaded_data['Conditioning therapy type'].dropna().unique())
 
     # Graft-Versus-Host Disease (GVHD) Prophylaxis
-    GVHD_Prophylaxis = st.selectbox("Graft-Versus-Host Disease (GVHD) Prophylaxis", options=uploaded_data['Graft-Versus-Host Disease (GVHD) Prophylaxis'].dropna().unique())
+    GVHD_Prophylaxis = col1.selectbox("Graft-Versus-Host Disease (GVHD) Prophylaxis", options=uploaded_data['Graft-Versus-Host Disease (GVHD) Prophylaxis'].dropna().unique())
 
     # Recipient blood type
-    Recipient_blood_type = st.selectbox("Recipient blood type", options=uploaded_data['Recipient blood type '].dropna().unique())
+    Recipient_blood_type = col2.selectbox("Recipient blood type", options=uploaded_data['Recipient blood type '].dropna().unique())
 
     # Donor blood type
-    Donor_blood_type = st.selectbox("Donor blood type", options=uploaded_data['Recipient blood type '].dropna().unique())
+    Donor_blood_type = col1.selectbox("Donor blood type", options=uploaded_data['Recipient blood type '].dropna().unique())
     
     # Blood type mismatch
     if Recipient_blood_type == Donor_blood_type:
@@ -479,20 +481,20 @@ if choice == "Survival prediction":
         Blood_type_mismatch = True
     
     # HSV infection status
-    HSV_infection_status = st.selectbox("HSV infection", options=uploaded_data['HSV infection status'].dropna().unique()) # st.checkbox("HSV infection")
+    HSV_infection_status = col2.selectbox("HSV infection", options=uploaded_data['HSV infection status'].dropna().unique()) # st.checkbox("HSV infection")
 
     # Engraftment status
-    Engraftment_status = st.selectbox("Engraftment", options=uploaded_data['Engraftment status'].dropna().unique()) # st.checkbox("Engraftment")
+    Engraftment_status = col1.selectbox("Engraftment", options=uploaded_data['Engraftment status'].dropna().unique()) # st.checkbox("Engraftment")
 
     # Total Body Irradiation Status
-    Total_Body_Irradiation_Status = st.selectbox("Total Body Irradiation", options=uploaded_data['Total Body Irradiation Status'].dropna().unique()) # st.checkbox("Total Body Irradiation")
+    Total_Body_Irradiation_Status = col2.selectbox("Total Body Irradiation", options=uploaded_data['Total Body Irradiation Status'].dropna().unique()) # st.checkbox("Total Body Irradiation")
 
     # Number of donor lymphocyte infusion
     Number_of_donor_lymphocyte_infusion = None # st.number_input("Number of donor lymphocyte infusion", min_value=0, value=0)
 
     # Additional variables based on your request
     # Recipent gender
-    Recipent_gender = st.selectbox("Recipent gender", options=uploaded_data['Recipent gender'].dropna().unique())
+    Recipent_gender = col1.selectbox("Recipent gender", options=uploaded_data['Recipent gender'].dropna().unique())
 
     # Donor gender
     Donor_gender = None # st.selectbox("Donor gender", options=uploaded_data['Donor gender'].dropna().unique())
@@ -505,7 +507,7 @@ if choice == "Survival prediction":
     The_amount_of_graft_given_to_the_recipient = None # st.number_input("The amount of graft given to the recipient", min_value=0.0, max_value=uploaded_data['The amount of graft given to the recipient'].max(), value=0.0)
 
     # CMV infection status
-    CMV_infection_status = st.selectbox("CMV infection", options=uploaded_data['CMV infection status'].dropna().unique()) # st.checkbox("CMV infection")
+    CMV_infection_status = col2.selectbox("CMV infection", options=uploaded_data['CMV infection status'].dropna().unique()) # st.checkbox("CMV infection")
 
     # Presence of hemorrhagic cystitis
     Presence_of_hemorrhagic_cystitis = None # st.checkbox("Presence of hemorrhagic cystitis")
@@ -514,20 +516,20 @@ if choice == "Survival prediction":
     else:
         Hemorrhagic_cystitis_grade = None
     
-    Defibrotide_prophylaxis = st.selectbox("Defibrotide prophylaxis", options=uploaded_data['Defibrotide prophylaxis'].dropna().unique()) #  st.checkbox("Defibrotide prophylaxis")
+    Defibrotide_prophylaxis = col1.selectbox("Defibrotide prophylaxis", options=uploaded_data['Defibrotide prophylaxis'].dropna().unique()) #  st.checkbox("Defibrotide prophylaxis")
     
     # The day the neutrophil count exceeds 1000
     The_day_the_neutrophil_count_exceeds_1000 = None # st.number_input("The day the neutrophil count exceeds 1000", min_value=0, max_value=145, value=0)
 
     # Additional variables
 
-    The_day_the_platelet_count_exceeds_20000 = st.number_input("The day the platelet count exceeds 20000", min_value=0, max_value=145, value=0)
+    The_day_the_platelet_count_exceeds_20000 = col2.number_input("The day the platelet count exceeds 20000", min_value=0, max_value=145, value=0)
     The_day_the_platelet_count_exceeds_50000 = None # st.number_input("The day the platelet count exceeds 50000", min_value=0, max_value=145, value=0)
     
     # Total Nucleated Cells 10E8
     Total_Nucleated_Cells_10E8 = None # st.number_input("Total Nucleated Cells 10E8", min_value=0.0, max_value=uploaded_data['Total Nucleated Cells 10E8'].max(), value=0.0)
     # Mononuclear cells 10E8
-    Mononuclear_cells_10E8 = st.number_input("Mononuclear cells 10E8", min_value=0.0, value=0.0)
+    Mononuclear_cells_10E8 = col1.number_input("Mononuclear cells 10E8", min_value=0.0, value=0.0)
     # CD34-positive cells 10E6
     CD34_positive_cells_10E6 = None # st.number_input("CD34-positive cells 10E6", min_value=0.0, value=0.0)
     # CD3-positive cells 10E7
@@ -541,12 +543,12 @@ if choice == "Survival prediction":
     # CD19+ 10E7
     CD19_positive_cells_10E7 = None # st.number_input("CD19+ cells 10E7", min_value=0.0, value=0.0)
     # Number of relapse
-    Number_of_relapse = st.number_input("Number of relapse", min_value=0, max_value=3, value=0)
+    Number_of_relapse = col2.number_input("Number of relapse", min_value=0, max_value=3, value=0)
     
-    AGVH_presence = st.checkbox("AGVH presence")
+    AGVH_presence = col1.checkbox("AGVH presence")
 
     if AGVH_presence:
-        AGVHD_grade = st.number_input("Acute GVHD grade", min_value=1, max_value=4, value=1)
+        AGVHD_grade = col1.number_input("Acute GVHD grade", min_value=1, max_value=4, value=1)
         AGVHD = AGVHD_grade
         if AGVHD_grade == 1:
             AGVH_severity_1vs234 = 0
@@ -639,8 +641,9 @@ if choice == "Chronic GVHD prediction":
     uploaded_data = pd.read_excel('tez_selected_data_v2_clean_v6_cat.xlsx')
 
     # Collect raw input variables (before feature engineering)
+    col1, col2 = st.columns([1,1])
     # Donor type
-    Donor_type = st.selectbox("Donor type", options=uploaded_data['Donor type'].dropna().unique())
+    Donor_type = col1.selectbox("Donor type", options=uploaded_data['Donor type'].dropna().unique())
     # HLA_numeric_conformance
     HLA_numeric_conformance = None # st.number_input("HLA numeric conformance", min_value=0.0, value=0.0)
 
@@ -648,16 +651,16 @@ if choice == "Chronic GVHD prediction":
     Haploidentical_transplant = None # st.checkbox("Haploidentical transplant")
 
     # Recipent age
-    Recipent_age = st.number_input("Recipent age", min_value=0, max_value=120, value=30)
+    Recipent_age = col2.number_input("Recipent age", min_value=0, max_value=120, value=30)
 
     # Donor age
-    Donor_age = st.number_input("Donor age", min_value=0, max_value=120, value=30)
+    Donor_age = col1.number_input("Donor age", min_value=0, max_value=120, value=30)
 
     # Recipent gender
-    Recipent_gender = st.selectbox("Recipent gender", options=uploaded_data['Recipent gender'].dropna().unique())
+    Recipent_gender = col2.selectbox("Recipent gender", options=uploaded_data['Recipent gender'].dropna().unique())
 
     # Donor gender
-    Donor_gender = st.selectbox("Donor gender", options=uploaded_data['Donor gender'].dropna().unique())
+    Donor_gender = col1.selectbox("Donor gender", options=uploaded_data['Donor gender'].dropna().unique())
 
     # Gender mismatch
     if Recipent_gender == Donor_gender:
@@ -666,31 +669,31 @@ if choice == "Chronic GVHD prediction":
         Gender_mismatch = True
 
     # Main diagnosis
-    Main_diagnosis = st.selectbox("Main diagnosis", options=uploaded_data['Main diagnosis'].dropna().unique())
+    Main_diagnosis = col2.selectbox("Main diagnosis", options=uploaded_data['Main diagnosis'].dropna().unique())
 
     # Diagnosis
-    Diagnosis = st.selectbox("Diagnosis", options=uploaded_data['Diagnosis'].dropna().unique())
+    Diagnosis = col1.selectbox("Diagnosis", options=uploaded_data['Diagnosis'].dropna().unique())
     
     # Diagnosis
     Subtype = None # st.selectbox("Subtype of Diagnosis", options=uploaded_data['Subtype'].dropna().unique())
     
     # Stem cell source
-    Stem_cell_source = st.selectbox("Stem cell source", options=uploaded_data['Stem cell source'].dropna().unique())
+    Stem_cell_source = col2.selectbox("Stem cell source", options=uploaded_data['Stem cell source'].dropna().unique())
 
     # Conditioning therapy
-    Conditioning_therapy = st.selectbox("Conditioning therapy", options=uploaded_data['Conditioning therapy'].dropna().unique())
+    Conditioning_therapy = col1.selectbox("Conditioning therapy", options=uploaded_data['Conditioning therapy'].dropna().unique())
 
     # Conditioning therapy type
-    Conditioning_therapy_type = st.selectbox("Conditioning therapy type", options=uploaded_data['Conditioning therapy type'].dropna().unique())
+    Conditioning_therapy_type = col2.selectbox("Conditioning therapy type", options=uploaded_data['Conditioning therapy type'].dropna().unique())
 
     # Graft-Versus-Host Disease (GVHD) Prophylaxis
-    GVHD_Prophylaxis = st.selectbox("Graft-Versus-Host Disease (GVHD) Prophylaxis", options=uploaded_data['Graft-Versus-Host Disease (GVHD) Prophylaxis'].dropna().unique())
+    GVHD_Prophylaxis = col1.selectbox("Graft-Versus-Host Disease (GVHD) Prophylaxis", options=uploaded_data['Graft-Versus-Host Disease (GVHD) Prophylaxis'].dropna().unique())
 
     # Recipient blood type
-    Recipient_blood_type = st.selectbox("Recipient blood type", options=uploaded_data['Recipient blood type '].dropna().unique())
+    Recipient_blood_type = col2.selectbox("Recipient blood type", options=uploaded_data['Recipient blood type '].dropna().unique())
 
     # Donor blood type
-    Donor_blood_type = st.selectbox("Donor blood type", options=uploaded_data['Recipient blood type '].dropna().unique())
+    Donor_blood_type = col1.selectbox("Donor blood type", options=uploaded_data['Recipient blood type '].dropna().unique())
     
     # Blood type mismatch
     if Recipient_blood_type == Donor_blood_type:
@@ -702,39 +705,39 @@ if choice == "Chronic GVHD prediction":
     HSV_infection_status = None # st.checkbox("HSV infection")
 
     # CMV infection status
-    CMV_infection_status = st.selectbox("CMV infection", options=uploaded_data['CMV infection status'].dropna().unique()) # st.checkbox("CMV infection")
+    CMV_infection_status = col2.selectbox("CMV infection", options=uploaded_data['CMV infection status'].dropna().unique()) # st.checkbox("CMV infection")
 
     # Engraftment status
     Engraftment_status = None # st.checkbox("Engraftment")
 
     # Number of donor lymphocyte infusion
-    Number_of_donor_lymphocyte_infusion = st.number_input("Number of donor lymphocyte infusion", min_value=0, value=0)
+    Number_of_donor_lymphocyte_infusion = col1.number_input("Number of donor lymphocyte infusion", min_value=0, value=0)
 
     # Additional variables based on your request
 
     # Mismatched locus count
-    Mismatched_locus_count = st.number_input("Mismatched locus count", min_value=0, max_value=2, value=0)
+    Mismatched_locus_count = col2.number_input("Mismatched locus count", min_value=0, max_value=2, value=0)
 
     # Total Body Irradiation Status
-    Total_Body_Irradiation_Status = st.selectbox("Total Body Irradiation", options=uploaded_data['Total Body Irradiation Status'].dropna().unique())
+    Total_Body_Irradiation_Status = col1.selectbox("Total Body Irradiation", options=uploaded_data['Total Body Irradiation Status'].dropna().unique())
         
     # Number of afferes applied to donor
-    Number_of_afferes_applied_to_donor = st.number_input("Number of apheresis applied to donor", min_value=0, max_value=5, value=1)
+    Number_of_afferes_applied_to_donor = col2.number_input("Number of apheresis applied to donor", min_value=0, max_value=5, value=1)
 
     # The amount of graft given to the recipient
-    The_amount_of_graft_given_to_the_recipient = st.number_input("The amount of graft given to the recipient", min_value=0.0, max_value=uploaded_data['The amount of graft given to the recipient'].max(), value=0.0)
+    The_amount_of_graft_given_to_the_recipient = col1.number_input("The amount of graft given to the recipient", min_value=0.0, max_value=uploaded_data['The amount of graft given to the recipient'].max(), value=0.0)
 
     # Mononuclear cells 10E8
     Mononuclear_cells_10E8 = None # st.number_input("Mononuclear cells 10E8", min_value=0.0, value=0.0)
 
     # CD34-positive cells 10E6
-    CD34_positive_cells_10E6 = st.number_input("CD34-positive cells 10E6", min_value=0.0, value=0.0)
+    CD34_positive_cells_10E6 = col2.number_input("CD34-positive cells 10E6", min_value=0.0, value=0.0)
 
     # CD3-positive cells 10E7
     CD3_positive_cells_10E7 = None # st.number_input("CD3-positive cells 10E7", min_value=0.0, value=0.0)
 
     # CD3-16-56+ 10E7
-    CD3_16_56_positive_cells_10E7 = st.number_input("CD3-16-56+ cells 10E7", min_value=0.0, value=0.0)
+    CD3_16_56_positive_cells_10E7 = col1.number_input("CD3-16-56+ cells 10E7", min_value=0.0, value=0.0)
 
     # CD3+4+ 10E7
     CD3_4_positive_cells_10E7 = None # st.number_input("CD3+4+ cells 10E7", min_value=0.0, value=0.0)
@@ -746,21 +749,21 @@ if choice == "Chronic GVHD prediction":
     CD19_positive_cells_10E7 = None # st.number_input("CD19+ cells 10E7", min_value=0.0, value=0.0)
      
     # Total Nucleated Cells 10E8
-    Total_Nucleated_Cells_10E8 = st.number_input("Total Nucleated Cells 10E8", min_value=0.0, max_value=uploaded_data['Total Nucleated Cells 10E8'].max(), value=0.0)
+    Total_Nucleated_Cells_10E8 = col2.number_input("Total Nucleated Cells 10E8", min_value=0.0, max_value=uploaded_data['Total Nucleated Cells 10E8'].max(), value=0.0)
    
     # The day the neutrophil count exceeds 1000
-    The_day_the_neutrophil_count_exceeds_1000 = st.number_input("The day the neutrophil count exceeds 1000", min_value=0, max_value=145, value=0)
+    The_day_the_neutrophil_count_exceeds_1000 = col1.number_input("The day the neutrophil count exceeds 1000", min_value=0, max_value=145, value=0)
 
     # Number of relapse
     Number_of_relapse = None # st.number_input("Number of relapse", min_value=0, max_value=3, value=0)
 
     # Additional variables
-    Defibrotide_prophylaxis = st.selectbox("Defibrotide prophylaxis", options=uploaded_data['Defibrotide prophylaxis'].dropna().unique())
+    Defibrotide_prophylaxis = col2.selectbox("Defibrotide prophylaxis", options=uploaded_data['Defibrotide prophylaxis'].dropna().unique())
 
-    AGVH_presence = st.checkbox("AGVH presence")
+    AGVH_presence = col1.checkbox("AGVH presence")
 
     if AGVH_presence:
-        AGVHD_grade = st.number_input("Acute GVHD grade", min_value=1, max_value=4, value=1)
+        AGVHD_grade = col1.number_input("Acute GVHD grade", min_value=1, max_value=4, value=1)
         AGVHD = AGVHD_grade
         if AGVHD_grade == 1:
             AGVH_severity_1vs234 = 0
